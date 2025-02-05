@@ -1,47 +1,45 @@
-
 # Voice Recognition System
+Overview
+This project is a voice recognition system that allows users to capture labeled voice samples, train a deep learning model, and recognize speakers in real-time using their voice. The dataset is stored in Google Drive, ensuring persistence across different sessions and easy data management.
 
-## Overview
-
-The **Voice Recognition System** is a machine learning project designed to identify speakers based on their unique voice patterns. This system leverages **MFCC (Mel-Frequency Cepstral Coefficients)** for feature extraction and a **neural network classifier** built using **TensorFlow/Keras** for speaker identification. 
-
-This project showcases the power of machine learning in the field of audio and speech recognition and can be used in applications such as **voice-based authentication**, **security**, and **personal assistants**.
-
-## Key Features
-
-- **Voice Sample Capture**: The system allows users to record voice samples directly from the browser.
-- **MFCC Feature Extraction**: The captured voice samples are processed to extract **MFCC features**, which represent the essential characteristics of speech.
-- **Neural Network Model**: A deep learning model built using **TensorFlow/Keras** is used to classify different speakers.
-- **Real-Time Prediction**: The system can predict the speaker's identity based on the recorded voice sample.
-- **Easy-to-Use Interface**: An intuitive interface for collecting and processing voice data.
-
-## Technologies Used
-
-- **Python**: The core programming language for data processing, training, and evaluation.
-- **TensorFlow/Keras**: For building and training the machine learning model.
-- **Librosa**: For audio processing and feature extraction.
-- **Google Colab**: For running the code and training the model in the cloud.
-- **Matplotlib**: For visualizing the results.
-- **NumPy**: For handling arrays and datasets.
-- **JavaScript**: For recording voice samples directly from the user's browser.
-
-## How It Works
-
-### 1. **Audio Capture**
-
-Voice samples are recorded directly from the user's microphone. Once recorded, the audio is saved as **.wav** files, which are stored in **Google Drive**.
-
-### 2. **MFCC Feature Extraction**
-
-Once the audio samples are captured, **MFCC features** are extracted using the **Librosa** library. These features represent key characteristics of the voice and are used as input to the neural network model.
-
-```python
-import librosa
-import numpy as np
-
-# Function to extract MFCC features
-def extract_features(audio_path):
-    y, sr = librosa.load(audio_path, sr=22050)
-    mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40)
-    mfcc = np.mean(mfcc, axis=1)  # Average across the time axis
-    return mfcc
+Features
+Capture and store labeled voice samples in Google Drive.
+Train a neural network model for speaker recognition using MFCC features.
+Use TensorFlow/Keras for model training and classification.
+Visualize and preprocess voice data.
+Predict and recognize speakers in real-time.
+Technologies Used
+Python (Google Colab)
+TensorFlow/Keras
+Librosa (for audio feature extraction)
+Matplotlib (for visualization)
+Google Drive API (for dataset storage)
+Project Workflow
+1. Dataset Creation
+Mounts Google Drive and stores voice samples in a specified directory.
+Uses a microphone to capture labeled voice samples and save them to the dataset.
+Ensures that each person has at least one voice sample for training.
+2. Data Preprocessing
+Loads audio samples and extracts MFCC features using Librosa.
+Normalizes the MFCC features for better model performance.
+Splits data into training and testing sets using train_test_split.
+3. Model Training
+Uses a neural network model with dense layers for classification.
+Trains the model using sparse categorical cross-entropy loss and Adam optimizer.
+Evaluates the trained model on the test dataset to determine its accuracy.
+4. Voice Recognition
+Records a new voice sample.
+Preprocesses the sample and feeds it into the trained model.
+Predicts and displays the recognized speaker.
+How to Use
+1. Run the Notebook in Google Colab
+Ensure that Google Drive is properly mounted.
+Run the dataset creation script to capture voice samples.
+2. Train the Model
+Execute the training script and monitor the model's accuracy.
+Adjust hyperparameters and retrain if necessary.
+3. Recognize Speakers
+Capture a new voice sample and run it through the trained model.
+The model will predict and display the recognized speaker.
+Acknowledgments
+This project is inspired by voice recognition applications and aims to provide an effective implementation using deep learning techniques.
